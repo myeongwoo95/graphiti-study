@@ -18,7 +18,7 @@ deactivate
 
 ### 패키지 설치
 ```shell
-uv add python-dotenv graphiti-core
+uv add python-dotenv graphiti-core langchain-neo4j ipykernel
 ```
 
 ### uv 명령어
