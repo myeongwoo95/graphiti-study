@@ -18,8 +18,8 @@ deactivate
 
 ### 패키지 설치
 ```shell
-uv add python-dotenv graphiti-core langchain-neo4j ipykernel
-```
+uv add python-dotenv graphiti-core langchain-neo4j ipykernel langchain langchain-core langchain-openai
+``` 
 
 ### uv 명령어
 ```shell
@@ -38,12 +38,12 @@ uv run *.py
     - 의미론적 임베딩, 키워드(BM25[Fulltext Index]), 그래프 순회를 결합하여 LLM 요약 없이도 저지연 쿼리를 달성 
     - "정확하게" 찾는 AI 에이전트!
 
+4. 사용자 정의 엔터티 정의: 간단한 Pydantic 모델을 통해 개발자가 정의한 엔터티에 대한 유연한 온톨로지 생성 및 지원
+5. 확장성: 병렬 처리를 통해 대규모 데이터 세트를 효율적으로 관리하므로 기업 환경에 적합 
+
 - 위 핵심 특징들을 내부적으로 구현했다는데, 실제로 테스트해서 성능평가는 해봐야할듯(후기도 찾아봐야할듯)
 - 참고로 MCP로도 지원한다함
 
 ### 메모2 (중요)
 - 유저의 세션은 어떻게 분리하는지? -> group_id
-- 대화에서 저장과 조회를 언제 해야 할지 구분은? -> 결국 LLM이나 규칙기반으로하는데 LLM으로 하는게 맞다 판단됨
-    - 저장(add_episode)의 경우: 매 턴마다 저장하기보단 대화 5~10턴 모아서 한 번에  배치로 묶어서 저장 좋아보임
-    - 조회(search)의 경우: 흠 모르겠음. 매턴마다 해야하지않을까? -> 인터넷에서에서 실제 사례를 조사해봐야할듯
-    - LLM 자체호스팅이면 저장/조회를 사용해야한다는 판단 자체는 sLLM이나 값싼모델로도 가능하지않을까 싶음
+- 대화에서 저장과 조회를 언제 해야 할지 구분은? -> LLM모델을 에이전트로하고 툴로 쥐어주면될듯 인스트럭션에 설명해주고
